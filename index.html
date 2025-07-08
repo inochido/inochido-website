@@ -66,10 +66,21 @@
             gap: 1rem;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
+        .logo-img {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s ease;
+        }
+
+        /* Dark theme (default) shows light logo */
+        [data-theme="dark"] .logo-img,
+        body:not([data-theme]) .logo-img { 
+            content: url('/assets/inochido-logo-light.svg'); 
+        }
+
+        /* Light theme shows dark logo */
+        [data-theme="light"] .logo-img { 
+            content: url('/assets/Dark-Mode-Logo.svg'); 
         }
 
         .nav-links {
@@ -336,7 +347,7 @@
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Inochido</div>
+            <img src="/assets/inochido-logo-light.svg" alt="Inochido" class="logo-img">
             <ul class="nav-links">
                 <li><a href="#mind-body">Mind & Body</a></li>
                 <li><a href="#innovation">Innovation</a></li>
