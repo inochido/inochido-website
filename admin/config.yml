@@ -17,30 +17,15 @@ collections:
             name: "hero"
             widget: "object"
             fields:
-              - {label: "Title", name: "title", widget: "string", default: "Welcome to Inochido"}
-              - {label: "Subtitle", name: "subtitle", widget: "text", default: "Your path to holistic growth through Mind & Body, Innovation, Inclusion, and Growth"}
-              - {label: "Button Text", name: "buttonText", widget: "string", default: "Explore Our Pillars"}
-          
-          - label: "Four Pillars"
-            name: "pillars"
-            widget: "list"
-            fields:
-              - {label: "Name", name: "name", widget: "string"}
-              - {label: "Icon", name: "icon", widget: "string"}
-              - {label: "Subtitle", name: "subtitle", widget: "text"}
-              - label: "Categories"
-                name: "categories"
-                widget: "list"
-                fields:
-                  - {label: "Category Name", name: "name", widget: "string"}
-                  - {label: "Description", name: "description", widget: "text"}
-
-  - name: "settings"
-    label: "Site Settings"
-    files:
-      - label: "General"
-        name: "general"
-        file: "content/settings.json"
-        fields:
-          - {label: "Site Title", name: "siteTitle", widget: "string", default: "Inochido"}
-          - {label: "Site Description", name: "siteDescription", widget: "text"}
+              - label: "Title"
+                name: "title"
+                widget: "string"
+                default: "Welcome to Inochido"
+              - label: "Subtitle"
+                name: "subtitle"
+                widget: "text"
+                default: "Your path to holistic growth"
+              - label: "Button Text"
+                name: "buttonText"
+                widget: "string"
+                default: "Explore Our Pillars"
