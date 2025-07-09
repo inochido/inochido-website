@@ -1,5 +1,6 @@
 backend:
-  name: test-repo
+  name: github
+  repo: inochido/inochido-website
   branch: dev
 
 media_folder: "assets"
@@ -29,3 +30,23 @@ collections:
                 name: "buttonText"
                 widget: "string"
                 default: "Explore Our Pillars"
+          - label: "Four Pillars Section"
+            name: "pillarsSection"
+            widget: "object"
+            fields:
+              - label: "Section Title"
+                name: "title"
+                widget: "string"
+                default: "Our Four Pillars"
+              - label: "Section Subtitle"
+                name: "subtitle"
+                widget: "text"
+                default: "A comprehensive approach to personal and professional development"
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General"
+        name: "general"
+        file: "content/settings.json"
+        fields:
