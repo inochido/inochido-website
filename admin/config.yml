@@ -1,7 +1,5 @@
 backend:
-  name: github
-  repo: inochido/inochido-website
-  branch: dev
+  name: test-repo
 
 media_folder: "assets"
 public_folder: "./assets"
