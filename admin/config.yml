@@ -50,3 +50,11 @@ collections:
         name: "general"
         file: "content/settings.json"
         fields:
+          - label: "Site Title"
+            name: "siteTitle"
+            widget: "string"
+            default: "Inochido"
+          - label: "Site Description"
+            name: "siteDescription"
+            widget: "text"
+            default: "A description of your site"
