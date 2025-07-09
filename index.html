@@ -10,18 +10,18 @@
             --primary-color: #667eea;
             --secondary-color: #764ba2;
             --text-color: #333;
-            --bg-color: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --header-bg: rgba(255, 255, 255, 0.1);
+            --bg-color: #F2F3FB;
+            --card-bg: rgba(242, 243, 251, 0.95);
+            --header-bg: rgba(242, 243, 251, 0.1);
             --shadow: rgba(0,0,0,0.1);
             --border-color: rgba(255, 255, 255, 0.3);
         }
 
         [data-theme="dark"] {
             --text-color: #e2e8f0;
-            --bg-color: #1a202c;
-            --card-bg: rgba(45, 55, 72, 0.95);
-            --header-bg: rgba(45, 55, 72, 0.1);
+            --bg-color: #222121;
+            --card-bg: rgba(34, 33, 33, 0.95);
+            --header-bg: rgba(34, 33, 33, 0.1);
             --shadow: rgba(0,0,0,0.3);
             --border-color: rgba(255, 255, 255, 0.1);
         }
@@ -36,7 +36,7 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            background: var(--bg-color);
             min-height: 100vh;
             font-size: var(--font-size, 16px);
             transition: all 0.3s ease;
@@ -75,12 +75,12 @@
         /* Dark theme (default) shows dark mode logo */
         [data-theme="dark"] .logo-img,
         body:not([data-theme]) .logo-img { 
-            content: url('/assets/Dark-Mode-Logo.svg'); 
+            content: url('./assets/Dark-Mode-Logo.svg'); 
         }
 
         /* Light theme shows light mode logo */
         [data-theme="light"] .logo-img { 
-            content: url('/assets/Light-Mode-Logo.svg'); 
+            content: url('./assets/Light-Mode-Logo.svg'); 
         }
 
         .nav-links {
@@ -91,7 +91,7 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--text-color);
             text-decoration: none;
             transition: opacity 0.3s;
             padding: 0.5rem 1rem;
@@ -111,8 +111,8 @@
 
         .control-btn {
             background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
+            border: 2px solid var(--text-color);
+            color: var(--text-color);
             padding: 0.5rem;
             border-radius: 50%;
             cursor: pointer;
@@ -123,6 +123,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
+            font-weight: bold;
         }
 
         .control-btn:hover {
@@ -131,7 +132,7 @@
         }
 
         .control-btn:focus {
-            outline: 2px solid white;
+            outline: 2px solid var(--text-color);
             outline-offset: 2px;
         }
 
@@ -143,7 +144,7 @@
         .hero {
             text-align: center;
             padding: 4rem 0;
-            color: white;
+            color: var(--text-color);
         }
 
         .hero h1 {
@@ -161,7 +162,7 @@
         .cta-button {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
-            color: white;
+            color: var(--text-color);
             padding: 1rem 2rem;
             text-decoration: none;
             border-radius: 50px;
@@ -347,7 +348,7 @@
 <body>
     <header>
         <nav class="container">
-            <img src="/assets/Light-Mode-Logo.svg" alt="Inochido" class="logo-img">
+           <img src="./assets/Dark-Mode-Logo.svg" alt="Inochido" class="logo-img">
             <ul class="nav-links">
                 <li><a href="#mind-body">Mind & Body</a></li>
                 <li><a href="#innovation">Innovation</a></li>

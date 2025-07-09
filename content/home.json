@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "title": "Welcome to Inochido",
+    "subtitle": "Your path to holistic growth through Mind & Body, Innovation, Inclusion, and Growth",
+    "buttonText": "Explore Our Pillars"
+  },
+  "pillars": [
+    {
+      "name": "Mind & Body",
+      "icon": "🧠",
+      "subtitle": "Physical and mental development through discipline and practice",
+      "categories": [
+        {
+          "name": "Martial Arts",
+          "description": "Physical discipline, mental focus, spiritual development"
+        },
+        {
+          "name": "Language Learning", 
+          "description": "Communication, culture, connection"
+        },
+        {
+          "name": "Spirituality",
+          "description": "Inner growth, mindfulness, meaning-making, purposeful living"
+        }
+      ]
+    },
+    {
+      "name": "Innovation",
+      "icon": "💡",
+      "subtitle": "Creating meaningful change through business and technology",
+      "categories": [
+        {
+          "name": "Business",
+          "description": "Entrepreneurship, innovation, purposeful commerce"
+        },
+        {
+          "name": "Technology",
+          "description": "Digital tools, accessibility, human-centered design"
+        }
+      ]
+    },
+    {
+      "name": "Inclusion",
+      "icon": "🤝", 
+      "subtitle": "Building a world that works for everyone",
+      "categories": [
+        {
+          "name": "Ability",
+          "description": "Disability advocacy, accessibility solutions"
+        },
+        {
+          "name": "Community Building",
+          "description": "Connecting people, inclusive practices"
+        }
+      ]
+    },
+    {
+      "name": "Growth",
+      "icon": "🌱",
+      "subtitle": "Individual journey toward purpose and fulfillment", 
+      "categories": [
+        {
+          "name": "Resource Development",
+          "description": "Guides, insights, practical tools"
+        },
+        {
+          "name": "Cross-Disciplinary Integration",
+          "description": "Connecting life domains"
+        }
+      ]
+    }
+  ]
+}
