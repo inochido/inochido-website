@@ -109,16 +109,74 @@
             content: url('./assets/Light-Mode-Logo.svg'); 
         }
 
-        .nav-center a {
-            color: var(--text-color);
-            text-decoration: none;
-            transition: opacity 0.3s;
-            padding: 0.5rem 1rem;
-            font-weight: 400;
+        .nav-item {
+            position: relative;
         }
 
-        .nav-center a:hover {
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .nav-link:hover {
             opacity: 0.7;
+        }
+
+        .dropdown-icon {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .nav-item .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            min-width: 200px;
+            box-shadow: 0 10px 30px var(--shadow);
+            z-index: 1000;
+            margin-top: 0.5rem;
+            display: none !important;
+        }
+
+        .nav-item .dropdown-menu.show {
+            display: block !important;
+        }
+
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 0.5rem 0;
+            margin: 0;
+        }
+
+        .dropdown-menu li {
+            margin: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--card-text);
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--bg-color);
         }
 
         .search-container {
@@ -288,11 +346,11 @@
             
             <ul class="nav-center">
                 <li class="nav-item">
-                    <div class="nav-link" data-dropdown="ability">
+                    <div class="nav-link" id="abilityBtn">
                         Ability
-                        <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        <i class="fa-solid fa-caret-down dropdown-icon" id="abilityIcon"></i>
                     </div>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" id="abilityMenu">
                         <ul>
                             <li><a href="#advocacy">Advocacy</a></li>
                             <li><a href="#accommodation">Accommodation Strategies</a></li>
@@ -302,11 +360,11 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <div class="nav-link" data-dropdown="business">
+                    <div class="nav-link" id="businessBtn">
                         Business
-                        <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        <i class="fa-solid fa-caret-down dropdown-icon" id="businessIcon"></i>
                     </div>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" id="businessMenu">
                         <ul>
                             <li><a href="#career">Career Development</a></li>
                             <li><a href="#workplace">Accessibility in Workplace</a></li>
@@ -316,11 +374,11 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <div class="nav-link" data-dropdown="learning">
+                    <div class="nav-link" id="learningBtn">
                         Learning
-                        <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        <i class="fa-solid fa-caret-down dropdown-icon" id="learningIcon"></i>
                     </div>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" id="learningMenu">
                         <ul>
                             <li><a href="#communication">Communication Skills</a></li>
                             <li><a href="#martial-arts">Martial Arts</a></li>
@@ -331,11 +389,11 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <div class="nav-link" data-dropdown="resources">
+                    <div class="nav-link" id="resourcesBtn">
                         Resources
-                        <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        <i class="fa-solid fa-caret-down dropdown-icon" id="resourcesIcon"></i>
                     </div>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" id="resourcesMenu">
                         <ul>
                             <li><a href="#tools">Tools & Guides</a></li>
                             <li><a href="#templates">Templates</a></li>
@@ -373,34 +431,86 @@
     <a href="/admin" class="admin-link"><i class="fa-solid fa-pencil"></i></a>
 
     <script>
-        // Dropdown functionality
-        const navItems = document.querySelectorAll('.nav-item');
-        
-        navItems.forEach(item => {
-            const navLink = item.querySelector('.nav-link');
-            
-            navLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                
-                // Close other dropdowns
-                navItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('open');
-                    }
-                });
-                
-                // Toggle current dropdown
-                item.classList.toggle('open');
-            });
-        });
+        // Dropdown functionality using simple approach
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ability dropdown
+            const abilityBtn = document.getElementById('abilityBtn');
+            const abilityMenu = document.getElementById('abilityMenu');
+            const abilityIcon = document.getElementById('abilityIcon');
 
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-item')) {
-                navItems.forEach(item => {
-                    item.classList.remove('open');
-                });
+            // Business dropdown
+            const businessBtn = document.getElementById('businessBtn');
+            const businessMenu = document.getElementById('businessMenu');
+            const businessIcon = document.getElementById('businessIcon');
+
+            // Learning dropdown
+            const learningBtn = document.getElementById('learningBtn');
+            const learningMenu = document.getElementById('learningMenu');
+            const learningIcon = document.getElementById('learningIcon');
+
+            // Resources dropdown
+            const resourcesBtn = document.getElementById('resourcesBtn');
+            const resourcesMenu = document.getElementById('resourcesMenu');
+            const resourcesIcon = document.getElementById('resourcesIcon');
+
+            // Close all dropdowns function
+            function closeAllDropdowns() {
+                abilityMenu.classList.remove('show');
+                businessMenu.classList.remove('show');
+                learningMenu.classList.remove('show');
+                resourcesMenu.classList.remove('show');
+                abilityIcon.classList.remove('rotated');
+                businessIcon.classList.remove('rotated');
+                learningIcon.classList.remove('rotated');
+                resourcesIcon.classList.remove('rotated');
             }
+
+            // Ability dropdown click
+            abilityBtn.addEventListener('click', function() {
+                const isOpen = abilityMenu.classList.contains('show');
+                closeAllDropdowns();
+                if (!isOpen) {
+                    abilityMenu.classList.add('show');
+                    abilityIcon.classList.add('rotated');
+                }
+            });
+
+            // Business dropdown click
+            businessBtn.addEventListener('click', function() {
+                const isOpen = businessMenu.classList.contains('show');
+                closeAllDropdowns();
+                if (!isOpen) {
+                    businessMenu.classList.add('show');
+                    businessIcon.classList.add('rotated');
+                }
+            });
+
+            // Learning dropdown click
+            learningBtn.addEventListener('click', function() {
+                const isOpen = learningMenu.classList.contains('show');
+                closeAllDropdowns();
+                if (!isOpen) {
+                    learningMenu.classList.add('show');
+                    learningIcon.classList.add('rotated');
+                }
+            });
+
+            // Resources dropdown click
+            resourcesBtn.addEventListener('click', function() {
+                const isOpen = resourcesMenu.classList.contains('show');
+                closeAllDropdowns();
+                if (!isOpen) {
+                    resourcesMenu.classList.add('show');
+                    resourcesIcon.classList.add('rotated');
+                }
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-item')) {
+                    closeAllDropdowns();
+                }
+            });
         });
 
         // Theme toggle functionality
