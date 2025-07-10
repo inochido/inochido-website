@@ -146,6 +146,15 @@
             transform: rotate(180deg);
         }
 
+        /* Mobile dropdown icon rotation - right to down */
+        .mobile-nav-link .dropdown-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-link .dropdown-icon.rotated {
+            transform: rotate(90deg);
+        }
+
         .nav-item .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -728,7 +737,7 @@
                 <li>
                     <div class="mobile-nav-link" data-mobile-dropdown>
                         Ability
-                        <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        <i class="fa-solid fa-caret-right dropdown-icon"></i>
                     </div>
                     <div class="mobile-submenu">
                         <a href="#advocacy">Advocacy</a>
@@ -740,7 +749,7 @@
                 <li>
                     <div class="mobile-nav-link" data-mobile-dropdown>
                         Business
-                        <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        <i class="fa-solid fa-caret-right dropdown-icon"></i>
                     </div>
                     <div class="mobile-submenu">
                         <a href="#career">Career Development</a>
@@ -752,7 +761,7 @@
                 <li>
                     <div class="mobile-nav-link" data-mobile-dropdown>
                         Learning
-                        <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        <i class="fa-solid fa-caret-right dropdown-icon"></i>
                     </div>
                     <div class="mobile-submenu">
                         <a href="#communication">Communication Skills</a>
@@ -765,7 +774,7 @@
                 <li>
                     <div class="mobile-nav-link" data-mobile-dropdown>
                         Resources
-                        <i class="fa-solid fa-caret-down dropdown-icon"></i>
+                        <i class="fa-solid fa-caret-right dropdown-icon"></i>
                     </div>
                     <div class="mobile-submenu">
                         <a href="#tools">Tools & Guides</a>
