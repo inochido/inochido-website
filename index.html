@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inochido - Your Path to Holistic Growth</title>
-    <meta name="description" content="Inochido: Holistic growth through Ability, Business, Learning, and Resources. Accessible web development and digital empowerment.">
+    <title>Inochido - Header Design</title>
+    <meta name="description" content="Inochido header design testing">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #222121;
@@ -37,7 +41,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Noto Sans', Arial, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
             background: var(--bg-color);
@@ -106,17 +110,15 @@
         }
 
         .nav-center a {
-            color: var(--card-text);
+            color: var(--text-color);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: opacity 0.3s;
             padding: 0.5rem 1rem;
-            border-radius: 20px;
-            background: var(--card-bg);
+            font-weight: 700;
         }
 
         .nav-center a:hover {
-            opacity: 0.8;
-            transform: translateY(-1px);
+            opacity: 0.7;
         }
 
         .search-container {
@@ -147,8 +149,9 @@
             border: none;
             color: var(--card-text);
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin-left: 0.5rem;
+            font-family: inherit;
         }
 
         .subscribe-btn {
@@ -188,8 +191,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: bold;
+            font-family: inherit;
         }
 
         .control-btn:hover {
@@ -197,9 +201,8 @@
             transform: scale(1.1);
         }
 
-        .control-btn:focus {
-            outline: 2px solid var(--border-color);
-            outline-offset: 2px;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Noto Serif', serif;
         }
 
         .hero {
@@ -431,7 +434,7 @@
             <div class="nav-right">
                 <div class="search-container">
                     <input type="text" class="search-input" placeholder="Search...">
-                    <button class="search-btn">🔍</button>
+                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 
                 <a href="#subscribe" class="subscribe-btn">Subscribe</a>
@@ -439,106 +442,32 @@
                 <div class="controls">
                     <button class="control-btn" id="decrease-font" title="Decrease text size" aria-label="Decrease text size">-</button>
                     <button class="control-btn" id="increase-font" title="Increase text size" aria-label="Increase text size">+</button>
-                    <button class="control-btn" id="theme-toggle" title="Toggle dark/light mode" aria-label="Toggle dark/light mode">🌙</button>
+                    <button class="control-btn" id="theme-toggle" title="Toggle dark/light mode" aria-label="Toggle dark/light mode"><i class="fa-solid fa-moon"></i></button>
                 </div>
             </div>
         </nav>
     </header>
 
     <main class="container">
-        <section class="hero">
-            <h1>Welcome to Inochido</h1>
-            <p>Your path to holistic growth through Ability, Business, Learning, and Resources</p>
-            <a href="#pillars" class="cta-button">Explore Our Content</a>
-        </section>
-
-        <div class="content">
-            <section class="section" id="pillars">
-                <h2>Our Four Pillars</h2>
-                <p>A comprehensive approach to personal and professional development</p>
-                
-                <div class="pillars">
-                    <div class="pillar" id="mind-body" tabindex="0">
-                        <h3><span class="pillar-icon" aria-label="Brain icon">🧠</span> Mind & Body</h3>
-                        <p class="pillar-subtitle">Physical and mental development through discipline and practice</p>
-                        <ul class="categories">
-                            <li>
-                                <div class="category-name">Martial Arts</div>
-                                <div class="category-description">Physical discipline, mental focus, spiritual development</div>
-                            </li>
-                            <li>
-                                <div class="category-name">Language Learning</div>
-                                <div class="category-description">Communication, culture, connection</div>
-                            </li>
-                            <li>
-                                <div class="category-name">Spirituality</div>
-                                <div class="category-description">Inner growth, mindfulness, meaning-making, purposeful living</div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="pillar" id="innovation" tabindex="0">
-                        <h3><span class="pillar-icon" aria-label="Light bulb icon">💡</span> Innovation</h3>
-                        <p class="pillar-subtitle">Creating meaningful change through business and technology</p>
-                        <ul class="categories">
-                            <li>
-                                <div class="category-name">Business</div>
-                                <div class="category-description">Entrepreneurship, innovation, purposeful commerce</div>
-                            </li>
-                            <li>
-                                <div class="category-name">Technology</div>
-                                <div class="category-description">Digital tools, accessibility, human-centered design</div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="pillar" id="inclusion" tabindex="0">
-                        <h3><span class="pillar-icon" aria-label="Handshake icon">🤝</span> Inclusion</h3>
-                        <p class="pillar-subtitle">Building a world that works for everyone</p>
-                        <ul class="categories">
-                            <li>
-                                <div class="category-name">Ability</div>
-                                <div class="category-description">Disability advocacy, accessibility solutions</div>
-                            </li>
-                            <li>
-                                <div class="category-name">Community Building</div>
-                                <div class="category-description">Connecting people, inclusive practices</div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="pillar" id="growth" tabindex="0">
-                        <h3><span class="pillar-icon" aria-label="Plant growing icon">🌱</span> Growth</h3>
-                        <p class="pillar-subtitle">Individual journey toward purpose and fulfillment</p>
-                        <ul class="categories">
-                            <li>
-                                <div class="category-name">Resource Development</div>
-                                <div class="category-description">Guides, insights, practical tools</div>
-                            </li>
-                            <li>
-                                <div class="category-name">Cross-Disciplinary Integration</div>
-                                <div class="category-description">Connecting life domains</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+        <div style="padding: 4rem 0; text-align: center;">
+            <h1 style="font-family: 'Noto Serif', serif;">Header Design Testing</h1>
+            <p>Focus area: Navigation and header layout</p>
         </div>
     </main>
 
-    <a href="/admin" class="admin-link">✏️ Edit Content</a>
+    <a href="/admin" class="admin-link"><i class="fa-solid fa-pencil"></i></a>
 
     <script>
         // Theme toggle functionality
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            body.setAttribute('data-theme', savedTheme);
-            themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-        }
+        // Check for saved theme preference, default to dark
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        body.setAttribute('data-theme', savedTheme);
+                    themeToggle.textContent = '';
+            const icon = savedTheme === 'dark' ? 'fa-sun' : 'fa-moon';
+            themeToggle.innerHTML = `<i class="fa-solid ${icon}"></i>`;
         
         themeToggle.addEventListener('click', () => {
             const currentTheme = body.getAttribute('data-theme');
@@ -546,7 +475,8 @@
             
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            const icon = newTheme === 'dark' ? 'fa-sun' : 'fa-moon';
+            themeToggle.innerHTML = `<i class="fa-solid ${icon}"></i>`;
         });
 
         // Font size controls
