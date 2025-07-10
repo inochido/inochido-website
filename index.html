@@ -78,7 +78,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
             max-width: 100%;
         }
 
@@ -90,7 +90,7 @@
         .nav-center {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1rem;
             margin: 0;
         }
 
@@ -463,7 +463,7 @@
 
             /* Tablet Navigation */
             .nav-center {
-                gap: 1.5rem;
+                gap: 1rem;
             }
 
             .search-input {
@@ -485,15 +485,15 @@
 
             /* Small Desktop Navigation */
             .nav-center {
-                gap: 2.5rem;
+                gap: 1.5rem;
             }
 
             .nav-link {
-                padding: 0.5rem 1.25rem;
+                padding: 0.5rem 1rem;
             }
 
             .search-input {
-                width: 220px;
+                width: 200px;
             }
 
             /* Small Desktop Components */
@@ -521,15 +521,15 @@
 
             /* Medium Desktop Navigation */
             .nav-center {
-                gap: 3rem;
+                gap: 2rem;
             }
 
             nav {
-                gap: 2.5rem;
+                gap: 2rem;
             }
 
             .search-input {
-                width: 250px;
+                width: 220px;
             }
 
             /* Medium Desktop Components */
@@ -561,7 +561,7 @@
             }
 
             .nav-link {
-                padding: 0.75rem 1.5rem;
+                padding: 0.5rem 1.25rem;
                 font-size: 1.05rem;
             }
 
@@ -596,15 +596,15 @@
 
             /* XL Desktop Navigation */
             .nav-center {
-                gap: 3.5rem;
+                gap: 2.5rem;
             }
 
             nav {
-                gap: 3rem;
+                gap: 2.5rem;
             }
 
             .search-input {
-                width: 300px;
+                width: 250px;
             }
 
             /* XL Desktop Components */
@@ -640,6 +640,256 @@
             clip: rect(0, 0, 0, 0);
             white-space: nowrap;
             border: 0;
+        }
+
+        /* Hero Slider Styles */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            background: var(--bg-color);
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slide-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(34, 33, 33, 0.8) 0%, rgba(34, 33, 33, 0.4) 100%);
+        }
+
+        [data-theme="light"] .slide-background::after {
+            background: linear-gradient(to right, rgba(242, 243, 251, 0.9) 0%, rgba(242, 243, 251, 0.5) 100%);
+        }
+
+        .slide-content {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .slide-inner {
+            max-width: 800px;
+            padding: 0 50px;
+        }
+
+        .slide-category {
+            display: inline-block;
+            background: #A9111B;
+            color: #F2F3FB;
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .slide-title {
+            font-family: 'Noto Serif', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: #F2F3FB;
+        }
+
+        [data-theme="light"] .slide-title {
+            color: #222121;
+        }
+
+        .slide-excerpt {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #F2F3FB;
+            opacity: 0.9;
+        }
+
+        [data-theme="light"] .slide-excerpt {
+            color: #222121;
+        }
+
+        .slide-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #A9111B;
+            color: #F2F3FB;
+            padding: 0.75rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid #A9111B;
+        }
+
+        .slide-link:hover {
+            background: transparent;
+            color: #A9111B;
+            transform: translateX(5px);
+        }
+
+        [data-theme="light"] .slide-link:hover {
+            color: #A9111B;
+            border-color: #A9111B;
+        }
+
+        /* Slider Controls */
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+            pointer-events: none;
+        }
+
+        .slider-prev,
+        .slider-next {
+            pointer-events: all;
+            background: rgba(34, 33, 33, 0.8);
+            border: 2px solid #F2F3FB;
+            color: #F2F3FB;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+        }
+
+        [data-theme="light"] .slider-prev,
+        [data-theme="light"] .slider-next {
+            background: rgba(242, 243, 251, 0.9);
+            border-color: #222121;
+            color: #222121;
+        }
+
+        .slider-prev:hover,
+        .slider-next:hover {
+            transform: scale(1.1);
+            background: #A9111B;
+            border-color: #A9111B;
+            color: #F2F3FB;
+        }
+
+        /* Slider Dots */
+        .slider-dots {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(242, 243, 251, 0.5);
+            border: 2px solid #F2F3FB;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .dot {
+            background: rgba(34, 33, 33, 0.3);
+            border-color: #222121;
+        }
+
+        .dot.active {
+            background: #A9111B;
+            border-color: #A9111B;
+            transform: scale(1.2);
+        }
+
+        .dot:hover {
+            transform: scale(1.2);
+        }
+
+        /* Mobile Responsive Hero Slider */
+        @media (max-width: 809px) {
+            .hero-slider {
+                height: 500px;
+            }
+
+            .slide-inner {
+                padding: 0 20px;
+            }
+
+            .slide-title {
+                font-size: 2rem;
+            }
+
+            .slide-excerpt {
+                font-size: 1rem;
+            }
+
+            .slider-prev,
+            .slider-next {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .slider-controls {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (min-width: 810px) and (max-width: 1199px) {
+            .slide-title {
+                font-size: 2.5rem;
+            }
+
+            .slide-excerpt {
+                font-size: 1.125rem;
+            }
         }
     </style>
 </head>
@@ -793,6 +1043,95 @@
             <p>Focus area: Navigation and header layout</p>
         </div>
     </main>
+
+    <!-- Hero Slider Section -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <!-- Slide 1 -->
+            <div class="slide active" data-slide="0">
+                <div class="slide-background" style="background-image: url('https://via.placeholder.com/1920x600/222121/f2f3fb?text=Post+1+Image');"></div>
+                <div class="slide-content">
+                    <div class="slide-inner">
+                        <span class="slide-category">Ability</span>
+                        <h2 class="slide-title">Advocating for Accessibility in the Digital Age</h2>
+                        <p class="slide-excerpt">Exploring how we can create more inclusive digital spaces that empower people with disabilities to thrive in our connected world.</p>
+                        <a href="#post1" class="slide-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide" data-slide="1">
+                <div class="slide-background" style="background-image: url('https://via.placeholder.com/1920x600/424246/f2f3fb?text=Post+2+Image');"></div>
+                <div class="slide-content">
+                    <div class="slide-inner">
+                        <span class="slide-category">Business</span>
+                        <h2 class="slide-title">AI Tools Revolutionizing Workplace Accessibility</h2>
+                        <p class="slide-excerpt">Discover how artificial intelligence is breaking down barriers and creating new opportunities for professionals with disabilities.</p>
+                        <a href="#post2" class="slide-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide" data-slide="2">
+                <div class="slide-background" style="background-image: url('https://via.placeholder.com/1920x600/A9111B/f2f3fb?text=Post+3+Image');"></div>
+                <div class="slide-content">
+                    <div class="slide-inner">
+                        <span class="slide-category">Learning</span>
+                        <h2 class="slide-title">Martial Arts as a Path to Empowerment</h2>
+                        <p class="slide-excerpt">How practicing martial arts can build confidence, discipline, and resilience for people facing physical and mental challenges.</p>
+                        <a href="#post3" class="slide-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slide" data-slide="3">
+                <div class="slide-background" style="background-image: url('https://via.placeholder.com/1920x600/d6d6d6/222121?text=Post+4+Image');"></div>
+                <div class="slide-content">
+                    <div class="slide-inner">
+                        <span class="slide-category">Resources</span>
+                        <h2 class="slide-title">Essential Tools for Independent Living</h2>
+                        <p class="slide-excerpt">A comprehensive guide to assistive technologies and resources that promote autonomy and quality of life.</p>
+                        <a href="#post4" class="slide-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="slide" data-slide="4">
+                <div class="slide-background" style="background-image: url('https://via.placeholder.com/1920x600/222121/f2f3fb?text=Post+5+Image');"></div>
+                <div class="slide-content">
+                    <div class="slide-inner">
+                        <span class="slide-category">Business</span>
+                        <h2 class="slide-title">Building Accessible Websites Without Breaking the Bank</h2>
+                        <p class="slide-excerpt">Practical strategies for creating inclusive web experiences on a budget, proving that accessibility doesn't have to be expensive.</p>
+                        <a href="#post5" class="slide-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Controls -->
+            <div class="slider-controls">
+                <button class="slider-prev" aria-label="Previous slide">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="slider-next" aria-label="Next slide">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Slider Dots -->
+            <div class="slider-dots">
+                <button class="dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                <button class="dot" data-slide="1" aria-label="Go to slide 2"></button>
+                <button class="dot" data-slide="2" aria-label="Go to slide 3"></button>
+                <button class="dot" data-slide="3" aria-label="Go to slide 4"></button>
+                <button class="dot" data-slide="4" aria-label="Go to slide 5"></button>
+            </div>
+        </div>
+    </section>
 
     <a href="/admin" class="admin-link"><i class="fa-solid fa-pencil"></i></a>
 
@@ -964,6 +1303,94 @@
 
             // Load content from CMS (placeholder for future implementation)
             console.log('Inochido website loaded');
+
+            // Hero Slider Functionality
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.querySelector('.slider-prev');
+            const nextBtn = document.querySelector('.slider-next');
+            let currentSlide = 0;
+            let slideInterval;
+
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Remove active class from all slides and dots
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+
+                // Add active class to current slide and dot
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+
+                currentSlide = index;
+            }
+
+            // Function to go to next slide
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            // Function to go to previous slide
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            // Function to start auto-play
+            function startSlideShow() {
+                slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            }
+
+            // Function to stop auto-play
+            function stopSlideShow() {
+                clearInterval(slideInterval);
+            }
+
+            // Event listeners for controls
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopSlideShow();
+                startSlideShow(); // Restart timer
+            });
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopSlideShow();
+                startSlideShow(); // Restart timer
+            });
+
+            // Event listeners for dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                    stopSlideShow();
+                    startSlideShow(); // Restart timer
+                });
+            });
+
+            // Pause on hover
+            const sliderContainer = document.querySelector('.slider-container');
+            sliderContainer.addEventListener('mouseenter', stopSlideShow);
+            sliderContainer.addEventListener('mouseleave', startSlideShow);
+
+            // Keyboard navigation for slider
+            document.addEventListener('keydown', (e) => {
+                if (e.target.closest('.hero-slider')) {
+                    if (e.key === 'ArrowRight') {
+                        nextSlide();
+                        stopSlideShow();
+                        startSlideShow();
+                    } else if (e.key === 'ArrowLeft') {
+                        prevSlide();
+                        stopSlideShow();
+                        startSlideShow();
+                    }
+                }
+            });
+
+            // Start the slideshow
+            startSlideShow();
         });
     </script>
 </body>
