@@ -664,7 +664,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 0.8s ease-in-out;
         }
 
         .slide.active {
@@ -682,18 +682,25 @@
             background-repeat: no-repeat;
         }
 
-        .slide-background::after {
-            content: '';
+        .slide-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(34, 33, 33, 0.8) 0%, rgba(34, 33, 33, 0.4) 100%);
+            background: linear-gradient(90deg, 
+                rgba(34, 33, 33, 0.95) 0%, 
+                rgba(34, 33, 33, 0.8) 40%, 
+                rgba(34, 33, 33, 0.4) 60%, 
+                rgba(34, 33, 33, 0) 100%);
         }
 
-        [data-theme="light"] .slide-background::after {
-            background: linear-gradient(to right, rgba(242, 243, 251, 0.9) 0%, rgba(242, 243, 251, 0.5) 100%);
+        [data-theme="light"] .slide-overlay {
+            background: linear-gradient(90deg, 
+                rgba(242, 243, 251, 0.98) 0%, 
+                rgba(242, 243, 251, 0.9) 40%, 
+                rgba(242, 243, 251, 0.5) 60%, 
+                rgba(242, 243, 251, 0) 100%);
         }
 
         .slide-content {
@@ -706,28 +713,25 @@
 
         .slide-inner {
             max-width: 800px;
-            padding: 0 50px;
+            padding: 0 120px;
         }
 
         .slide-category {
             display: inline-block;
-            background: #A9111B;
-            color: #F2F3FB;
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
+            color: #A9111B;
             font-size: 0.875rem;
             font-weight: 700;
-            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
         }
 
         .slide-title {
             font-family: 'Noto Serif', serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
             line-height: 1.2;
+            margin-bottom: 1.5rem;
             color: #F2F3FB;
         }
 
@@ -737,7 +741,7 @@
 
         .slide-excerpt {
             font-size: 1.25rem;
-            line-height: 1.6;
+            line-height: 1.7;
             margin-bottom: 2rem;
             color: #F2F3FB;
             opacity: 0.9;
@@ -745,31 +749,67 @@
 
         [data-theme="light"] .slide-excerpt {
             color: #222121;
+            opacity: 0.8;
         }
 
-        .slide-link {
+        .slide-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary,
+        .btn-secondary {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: #A9111B;
-            color: #F2F3FB;
-            padding: 0.75rem 2rem;
+            padding: 0.875rem 2rem;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
             transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: #A9111B;
+            color: #F2F3FB;
             border: 2px solid #A9111B;
         }
 
-        .slide-link:hover {
+        .btn-primary:hover {
             background: transparent;
-            color: #A9111B;
-            transform: translateX(5px);
+            color: #F2F3FB;
+            border-color: #F2F3FB;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
 
-        [data-theme="light"] .slide-link:hover {
+        [data-theme="light"] .btn-primary:hover {
             color: #A9111B;
             border-color: #A9111B;
+            box-shadow: 0 5px 15px rgba(169, 17, 27, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #F2F3FB;
+            border: 2px solid #F2F3FB;
+        }
+
+        [data-theme="light"] .btn-secondary {
+            color: #222121;
+            border-color: #222121;
+        }
+
+        .btn-secondary:hover {
+            background: #F2F3FB;
+            color: #222121;
+            transform: translateY(-2px);
+        }
+
+        [data-theme="light"] .btn-secondary:hover {
+            background: #222121;
+            color: #F2F3FB;
         }
 
         /* Slider Controls */
@@ -782,6 +822,7 @@
             justify-content: space-between;
             padding: 0 2rem;
             pointer-events: none;
+            z-index: 3;
         }
 
         .slider-prev,
@@ -824,11 +865,12 @@
             transform: translateX(-50%);
             display: flex;
             gap: 0.75rem;
+            z-index: 3;
         }
 
         .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(242, 243, 251, 0.5);
             border: 2px solid #F2F3FB;
@@ -844,7 +886,7 @@
         .dot.active {
             background: #A9111B;
             border-color: #A9111B;
-            transform: scale(1.2);
+            transform: scale(1.5);
         }
 
         .dot:hover {
@@ -852,6 +894,16 @@
         }
 
         /* Mobile Responsive Hero Slider */
+        @media (max-width: 1199px) {
+            .slide-inner {
+                padding: 0 80px;
+            }
+
+            .slide-title {
+                font-size: 3rem;
+            }
+        }
+
         @media (max-width: 809px) {
             .hero-slider {
                 height: 500px;
@@ -859,6 +911,23 @@
 
             .slide-inner {
                 padding: 0 20px;
+                max-width: 100%;
+            }
+
+            .slide-overlay {
+                background: linear-gradient(to top, 
+                    rgba(34, 33, 33, 0.95) 0%, 
+                    rgba(34, 33, 33, 0.85) 50%, 
+                    rgba(34, 33, 33, 0) 50%, 
+                    rgba(34, 33, 33, 0) 100%);
+            }
+
+            [data-theme="light"] .slide-overlay {
+                background: linear-gradient(to top, 
+                    rgba(242, 243, 251, 0.98) 0%, 
+                    rgba(242, 243, 251, 0.9) 50%, 
+                    rgba(242, 243, 251, 0) 50%, 
+                    rgba(242, 243, 251, 0) 100%);
             }
 
             .slide-title {
@@ -867,6 +936,12 @@
 
             .slide-excerpt {
                 font-size: 1rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
             }
 
             .slider-prev,
@@ -891,6 +966,26 @@
                 font-size: 1.125rem;
             }
         }
+
+        /* Container adjustments for slider */
+        @media (min-width: 1400px) {
+            .slide-inner {
+                padding: 0 100px;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .slide-inner {
+                padding: 0 120px;
+            }
+        }
+
+        @media (min-width: 1920px) {
+            .slide-inner {
+                padding: 0 150px;
+                max-width: 900px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -908,10 +1003,10 @@
                     </div>
                     <div class="dropdown-menu" id="abilityMenu">
                         <ul>
-                            <li><a href="#advocacy">Advocacy</a></li>
-                            <li><a href="#accommodation">Accommodation Strategies</a></li>
-                            <li><a href="#coping">Coping & Resilience</a></li>
-                            <li><a href="#community">Community Resources</a></li>
+                            <li><a href="#ability-post">Advocacy</a></li>
+                            <li><a href="#ability-post">Accommodation Strategies</a></li>
+                            <li><a href="#ability-post">Coping & Resilience</a></li>
+                            <li><a href="#ability-post">Community Resources</a></li>
                         </ul>
                     </div>
                 </li>
@@ -922,10 +1017,10 @@
                     </div>
                     <div class="dropdown-menu" id="businessMenu">
                         <ul>
-                            <li><a href="#career">Career Development</a></li>
-                            <li><a href="#workplace">Accessibility in Workplace</a></li>
-                            <li><a href="#ai">AI & Innovation</a></li>
-                            <li><a href="#webdev">Web Development</a></li>
+                            <li><a href="#business-post">Career Development</a></li>
+                            <li><a href="#business-post">Accessibility in Workplace</a></li>
+                            <li><a href="#business-post">AI & Innovation</a></li>
+                            <li><a href="#business-post">Web Development</a></li>
                         </ul>
                     </div>
                 </li>
@@ -936,11 +1031,11 @@
                     </div>
                     <div class="dropdown-menu" id="learningMenu">
                         <ul>
-                            <li><a href="#communication">Communication Skills</a></li>
-                            <li><a href="#martial-arts">Martial Arts</a></li>
-                            <li><a href="#languages">Languages</a></li>
-                            <li><a href="#cooking">Cooking</a></li>
-                            <li><a href="#spiritual">Spiritual Growth</a></li>
+                            <li><a href="#learning-post">Communication Skills</a></li>
+                            <li><a href="#learning-post">Martial Arts</a></li>
+                            <li><a href="#learning-post">Languages</a></li>
+                            <li><a href="#learning-post">Cooking</a></li>
+                            <li><a href="#learning-post">Spiritual Growth</a></li>
                         </ul>
                     </div>
                 </li>
@@ -951,10 +1046,11 @@
                     </div>
                     <div class="dropdown-menu" id="resourcesMenu">
                         <ul>
-                            <li><a href="#tools">Tools & Guides</a></li>
-                            <li><a href="#templates">Templates</a></li>
-                            <li><a href="#links">Community Links</a></li>
-                            <li><a href="#docs">Documentation</a></li>
+                            <li><a href="#resources-post">Tools</a></li>
+                            <li><a href="#resources-post">Guides</a></li>
+                            <li><a href="#resources-post">Templates</a></li>
+                            <li><a href="#resources-post">Community Links</a></li>
+                            <li><a href="#resources-post">Documentation</a></li>
                         </ul>
                     </div>
                 </li>
@@ -990,10 +1086,10 @@
                         <i class="fa-solid fa-caret-right dropdown-icon"></i>
                     </div>
                     <div class="mobile-submenu">
-                        <a href="#advocacy">Advocacy</a>
-                        <a href="#accommodation">Accommodation Strategies</a>
-                        <a href="#coping">Coping & Resilience</a>
-                        <a href="#community">Community Resources</a>
+                        <a href="#ability-post">Advocacy</a>
+                        <a href="#ability-post">Accommodation Strategies</a>
+                        <a href="#ability-post">Coping & Resilience</a>
+                        <a href="#ability-post">Community Resources</a>
                     </div>
                 </li>
                 <li>
@@ -1002,10 +1098,10 @@
                         <i class="fa-solid fa-caret-right dropdown-icon"></i>
                     </div>
                     <div class="mobile-submenu">
-                        <a href="#career">Career Development</a>
-                        <a href="#workplace">Accessibility in Workplace</a>
-                        <a href="#ai">AI & Innovation</a>
-                        <a href="#webdev">Web Development</a>
+                        <a href="#business-post">Career Development</a>
+                        <a href="#business-post">Accessibility in Workplace</a>
+                        <a href="#business-post">AI & Innovation</a>
+                        <a href="#business-post">Web Development</a>
                     </div>
                 </li>
                 <li>
@@ -1014,11 +1110,11 @@
                         <i class="fa-solid fa-caret-right dropdown-icon"></i>
                     </div>
                     <div class="mobile-submenu">
-                        <a href="#communication">Communication Skills</a>
-                        <a href="#martial-arts">Martial Arts</a>
-                        <a href="#languages">Languages</a>
-                        <a href="#cooking">Cooking</a>
-                        <a href="#spiritual">Spiritual Growth</a>
+                        <a href="#learning-post">Communication Skills</a>
+                        <a href="#learning-post">Martial Arts</a>
+                        <a href="#learning-post">Languages</a>
+                        <a href="#learning-post">Cooking</a>
+                        <a href="#learning-post">Spiritual Growth</a>
                     </div>
                 </li>
                 <li>
@@ -1027,10 +1123,11 @@
                         <i class="fa-solid fa-caret-right dropdown-icon"></i>
                     </div>
                     <div class="mobile-submenu">
-                        <a href="#tools">Tools & Guides</a>
-                        <a href="#templates">Templates</a>
-                        <a href="#links">Community Links</a>
-                        <a href="#docs">Documentation</a>
+                        <a href="#resources-post">Tools</a>
+                        <a href="#resources-post">Guides</a>
+                        <a href="#resources-post">Templates</a>
+                        <a href="#resources-post">Community Links</a>
+                        <a href="#resources-post">Documentation</a>
                     </div>
                 </li>
             </ul>
@@ -1038,76 +1135,79 @@
     </header>
 
     <main class="container">
-        <div style="padding: 4rem 0; text-align: center;">
-            <h1 style="font-family: 'Noto Serif', serif;">Header Design Testing</h1>
-            <p>Focus area: Navigation and header layout</p>
-        </div>
     </main>
 
     <!-- Hero Slider Section -->
     <section class="hero-slider">
         <div class="slider-container">
-            <!-- Slide 1 -->
+            <!-- Slide 1 - Ability -->
             <div class="slide active" data-slide="0">
-                <div class="slide-background" style="background-image: url('https://via.placeholder.com/1920x600/222121/f2f3fb?text=Post+1+Image');"></div>
+                <div class="slide-background" style="background-image: url('./assets/Ability-Hero-Image.jpg');">
+                    <div class="slide-overlay"></div>
+                </div>
                 <div class="slide-content">
                     <div class="slide-inner">
-                        <span class="slide-category">Ability</span>
-                        <h2 class="slide-title">Advocating for Accessibility in the Digital Age</h2>
+                        <span class="slide-category">Featured in Ability</span>
+                        <h1 class="slide-title">Advocating for Accessibility in the Digital Age</h1>
                         <p class="slide-excerpt">Exploring how we can create more inclusive digital spaces that empower people with disabilities to thrive in our connected world.</p>
-                        <a href="#post1" class="slide-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="slide-buttons">
+                            <a href="#ability-post" class="btn-primary">Read Article</a>
+                            <a href="#ability-post" class="btn-secondary">Explore Ability</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 2 -->
+            <!-- Slide 2 - Business -->
             <div class="slide" data-slide="1">
-                <div class="slide-background" style="background-image: url('https://via.placeholder.com/1920x600/424246/f2f3fb?text=Post+2+Image');"></div>
+                <div class="slide-background" style="background-image: url('./assets/Business-Hero-Image.jpg');">
+                    <div class="slide-overlay"></div>
+                </div>
                 <div class="slide-content">
                     <div class="slide-inner">
-                        <span class="slide-category">Business</span>
-                        <h2 class="slide-title">AI Tools Revolutionizing Workplace Accessibility</h2>
+                        <span class="slide-category">Featured in Business</span>
+                        <h1 class="slide-title">AI Tools Revolutionizing Workplace Accessibility</h1>
                         <p class="slide-excerpt">Discover how artificial intelligence is breaking down barriers and creating new opportunities for professionals with disabilities.</p>
-                        <a href="#post2" class="slide-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="slide-buttons">
+                            <a href="#business-post" class="btn-primary">Read Article</a>
+                            <a href="#business-post" class="btn-secondary">Explore Business</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 3 -->
+            <!-- Slide 3 - Learning -->
             <div class="slide" data-slide="2">
-                <div class="slide-background" style="background-image: url('https://via.placeholder.com/1920x600/A9111B/f2f3fb?text=Post+3+Image');"></div>
+                <div class="slide-background" style="background-image: url('./assets/Learning-Hero-Image.jpg');">
+                    <div class="slide-overlay"></div>
+                </div>
                 <div class="slide-content">
                     <div class="slide-inner">
-                        <span class="slide-category">Learning</span>
-                        <h2 class="slide-title">Martial Arts as a Path to Empowerment</h2>
+                        <span class="slide-category">Featured in Learning</span>
+                        <h1 class="slide-title">Martial Arts as a Path to Empowerment</h1>
                         <p class="slide-excerpt">How practicing martial arts can build confidence, discipline, and resilience for people facing physical and mental challenges.</p>
-                        <a href="#post3" class="slide-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="slide-buttons">
+                            <a href="#learning-post" class="btn-primary">Read Article</a>
+                            <a href="#learning-post" class="btn-secondary">Explore Learning</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 4 -->
+            <!-- Slide 4 - Resources -->
             <div class="slide" data-slide="3">
-                <div class="slide-background" style="background-image: url('https://via.placeholder.com/1920x600/d6d6d6/222121?text=Post+4+Image');"></div>
-                <div class="slide-content">
-                    <div class="slide-inner">
-                        <span class="slide-category">Resources</span>
-                        <h2 class="slide-title">Essential Tools for Independent Living</h2>
-                        <p class="slide-excerpt">A comprehensive guide to assistive technologies and resources that promote autonomy and quality of life.</p>
-                        <a href="#post4" class="slide-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
+                <div class="slide-background" style="background-image: url('./assets/Resources-Hero-Image.jpg');">
+                    <div class="slide-overlay"></div>
                 </div>
-            </div>
-
-            <!-- Slide 5 -->
-            <div class="slide" data-slide="4">
-                <div class="slide-background" style="background-image: url('https://via.placeholder.com/1920x600/222121/f2f3fb?text=Post+5+Image');"></div>
                 <div class="slide-content">
                     <div class="slide-inner">
-                        <span class="slide-category">Business</span>
-                        <h2 class="slide-title">Building Accessible Websites Without Breaking the Bank</h2>
-                        <p class="slide-excerpt">Practical strategies for creating inclusive web experiences on a budget, proving that accessibility doesn't have to be expensive.</p>
-                        <a href="#post5" class="slide-link">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        <span class="slide-category">Featured in Resources</span>
+                        <h1 class="slide-title">Essential Tools for Independent Living</h1>
+                        <p class="slide-excerpt">A comprehensive guide to assistive technologies and resources that promote autonomy and quality of life.</p>
+                        <div class="slide-buttons">
+                            <a href="#resources-post" class="btn-primary">Read Article</a>
+                            <a href="#resources-post" class="btn-secondary">Explore Resources</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1128,7 +1228,6 @@
                 <button class="dot" data-slide="1" aria-label="Go to slide 2"></button>
                 <button class="dot" data-slide="2" aria-label="Go to slide 3"></button>
                 <button class="dot" data-slide="3" aria-label="Go to slide 4"></button>
-                <button class="dot" data-slide="4" aria-label="Go to slide 5"></button>
             </div>
         </div>
     </section>
